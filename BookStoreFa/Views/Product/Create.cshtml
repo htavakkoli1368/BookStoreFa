@@ -1,0 +1,18 @@
+﻿@using BookStoreFa.ViewModel
+@model CreateProductViewModel
+
+<form asp-action="CreateFormRegistration" method="post">
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+
+    <div>
+        <label asp-for="Price"></label>
+        <input asp-for="Price" />
+        <span asp-validation-for="Price"></span>
+    </div>
+
+    <button type="submit">Create Product</button>
+</form>

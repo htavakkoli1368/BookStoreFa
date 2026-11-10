@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Products>
+
+<h2>لیست محصولات</h2>
+
+@if (Model.Any())
+{
+    <ul>
+        @foreach (var product in Model)
+        {
+            <li>
+                <strong>نام محصول:</strong> @product.Name
+                |
+                <strong>قیمت:</strong> @product.Price
+                |
+                <strong>موجودی:</strong> @product.Stock
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>هیچ محصولی برای نمایش وجود ندارد.</p>
+}
