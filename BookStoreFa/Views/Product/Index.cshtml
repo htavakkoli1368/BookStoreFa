@@ -1,23 +1,56 @@
 ﻿@model IEnumerable<Products>
 
-<h2>لیست محصولات</h2>
-
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Books</h2>
+    <a asp-action="Create" class="btn btn-primary">
+        Add New Book
+    </a>
+</div>
+<h2 class="text-center text-bg-info">لیست محصولات</h2>
 @if (Model.Any())
 {
-    <ul>
-        @foreach (var product in Model)
-        {
-            <li>
-                <strong>نام محصول:</strong> @product.Name
-                |
-                <strong>قیمت:</strong> @product.Price
-                |
-                <strong>موجودی:</strong> @product.Stock
-            </li>
-        }
-    </ul>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>IsPublished</th>
+                    <th>Stock</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <td>@product.Name</td>
+                        <td>@product.Price</td>
+                        <td>@product.IsPublished</td>
+                        <td>@product.Stock</td>
+                        <td>
+                            <a asp-action="Edit"
+                               asp-route-id="@product.Id"
+                               class="btn btn-sm btn-warning">
+                                Edit
+                            </a>
+
+                            <a asp-action="Delete"
+                               asp-route-id="@product.Id"
+                               class="btn btn-sm btn-danger">
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 }
 else
 {
-    <p>هیچ محصولی برای نمایش وجود ندارد.</p>
+    <div class="alert alert-info">
+        No books found.
+    </div>
 }
